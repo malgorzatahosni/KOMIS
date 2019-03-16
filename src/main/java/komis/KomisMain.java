@@ -12,6 +12,7 @@ public class KomisMain {
 
         Scanner scanner = new Scanner(System.in);
 
+
         System.out.println("WITAJ W KOMISIE! MENU:");
         System.out.println("1. Dodaj nowy samochód.");
         System.out.println("2. Wyświetl listę samochodów.");
@@ -23,16 +24,36 @@ public class KomisMain {
 
         switch (firstMove) {
             case 1:
-                createNewCar();
-                break;
+                System.out.println("Ile samochodów chcesz dodać?");
+                int numberOfCars = scanner.nextInt();
+                for (int i = 0; i < numberOfCars; i++) {
+                    createNewCar();
+                    System.out.println("Dodałeś nowy samochód");
+                }
+                System.out.println();
             case 2:
-                System.out.println("Lista:");
+                System.out.println("Oto lista samochodów:");
                 System.out.println(cars.toString());
                 System.out.println();
-                System.out.println("Co dalej?");
+                System.out.println("Co robisz dalej?");
                 System.out.println("1: posortuj i wyświetl.");
                 System.out.println("2: filtruj i wyświetl.");
                 int secondMove = scanner.nextInt();
+                if (secondMove == 1) {
+                    System.out.println("Po jakim parametrze chcesz sortować?");
+                    System.out.println("1: Cena");
+                    System.out.println("2: Rok produkcji");
+                    System.out.println("Wpisz 1 lub 2.");
+                    int thirdMove = scanner.nextInt();
+                    if (thirdMove == 1) {
+                        sortByPrice();
+                    } else {
+                        sortByYear();
+                    }
+                } else {
+                    System.out.println("Podaj filtr:");
+                }
+
                 break;
             case 3:
                 System.out.println("Podaj, który samochód chcesz usunąć?");
@@ -58,6 +79,16 @@ public class KomisMain {
         int year = scanner1.nextInt();
         Car car = new Car(color, price, doors, name, year);
         cars.add(car);
+    }
+
+    public static void sortByPrice() {
+        cars.sort(new SortByPriceComparator());
+        System.out.println(cars.toString());
+    }
+
+    public static void sortByYear() {
+        cars.sort(new SortByPriceComparator());
+        System.out.println(cars.toString());
     }
 
 }
