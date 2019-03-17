@@ -60,11 +60,11 @@ public class Car {
     @Override
     public String toString() {
         return "Car{" +
-                "color= '" + color + '\'' +
-                ", price= " + price +
-                ", doors= " + doors +
-                ", name= '" + name + '\'' +
-                ", year= " + year +
-                '}' + '\n';
+                "color: '" + color + '\'' +
+                ", price: " + price +
+                ", doors: " + doors +
+                ", name: '" + name + '\'' +
+                ", year: " + year +
+                '}' + "\n";
     }
 }
